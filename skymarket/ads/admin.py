@@ -1,6 +1,16 @@
 from django.contrib import admin
 
-from ads.models import Ad, Comment
+from skymarket.ads.models import Ad, Comment
 
-# TODO здесь можно подкючить ваши модели к стандартной джанго-админке
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+
+    comments_fields = ("pk", "author", "text")
+
+
+@admin.register(Ad)
+class AdAdmin(admin.ModelAdmin):
+    admin_fields = ("pk", "author", "title", "price", "image")
+
 
